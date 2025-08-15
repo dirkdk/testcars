@@ -3,16 +3,17 @@ services:
   frontend:
     build: ./frontend
     ports:
-      - "3000:3000"
+      - "3001:3000"
     volumes:
       - ./frontend:/app
+      - /app/node_modules
   backend:
     build:
       context: ./backend
       args:
         - DATABASE_URL=postgresql://user:password@db:5432/mydatabase
     ports:
-      - "5001:5000"
+      - "5002:5000"
     volumes:
       - ./backend:/app
     depends_on:
