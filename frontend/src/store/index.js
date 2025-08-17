@@ -12,10 +12,11 @@ const useStore = create((set) => ({
     set({ cars: response.data });
   },
   updateMileage: async (carId, mileage) => {
-    await axios.put(`/cars/${carId}/mileage`, { mileage });
+    const mileageAsInt = parseInt(mileage, 10);
+    await axios.put(`/cars/${carId}/mileage`, { mileage: mileageAsInt });
     set((state) => ({
       cars: state.cars.map((car) =>
-        car.id === carId ? { ...car, mileage } : car
+        car.id === carId ? { ...car, mileage: mileageAsInt } : car
       ),
     }));
   },

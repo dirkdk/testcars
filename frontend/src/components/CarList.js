@@ -13,8 +13,9 @@ const CarList = () => {
     setMileage({ ...mileage, [carId]: value });
   };
 
-  const handleUpdateMileage = (carId) => {
-    updateMileage(carId, mileage[carId]);
+  const handleUpdateMileage = async (carId) => {
+    await updateMileage(carId, mileage[carId]);
+    setMileage({ ...mileage, [carId]: '' });
   };
 
   return (
